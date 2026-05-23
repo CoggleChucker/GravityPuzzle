@@ -24,7 +24,6 @@ You must:
 - Move the player through platforms and obstacles.
 - Change gravity to access otherwise unreachable areas.
 - Collect points scattered around the level.
-- Reach the target or exit to trigger a game win.
 - Avoid falling or failing conditions that cause a game lose.
 
 This design encourages experimentation with different gravity states to find creative paths through the space.
@@ -49,7 +48,7 @@ The core Unity project is organized as follows:
 
 ### Prerequisites
 
-- Unity (version compatible with this project; open with your installed Unity Hub and let it select the appropriate editor version).
+- Unity (Unity 6.3 LTS (6000.3.13f1) URP).
 - A C#-capable IDE (Visual Studio, Rider, or VS Code) is recommended.
 
 ### Cloning the Repository
@@ -74,15 +73,14 @@ cd GravityPuzzle
 - **Player Controller**  
   Handles player movement, input, and third-person camera behavior.
 
-- **Gravity Controller**  
-  Manages the current gravity vector and updates the physics environment accordingly.  
-  Player input or in-world triggers can change gravity direction.
+- **Gravity Controller**    
+  Player input can change gravity direction.
 
 - **Gravity Indicator**  
   Provides a visual representation of the active gravity direction so the player always understands the current orientation.
 
 - **Game State & UI**  
-  Implements win/lose conditions, timers, and score tracking, and can drive basic UI feedback (e.g., when time is low or when the goal is reached).
+  Implements win/lose conditions, timers, and score tracking, and can drive basic UI feedback.
 
 ---
 
@@ -116,7 +114,6 @@ Contributions, ideas, and feedback are welcome. To contribute:
 ## License
 
 This project currently does not specify a license.  
-If you plan to use or distribute this project, consider adding an open-source license (for example, MIT, Apache 2.0, or GPL) and update this section accordingly.
 
 ---
 
