@@ -39,14 +39,17 @@ public class GravityIndicatorScript : MonoBehaviour
     { 
         //Debug.Log("Gravity Indicator Update");
         Vector2 input = inputAction.ReadValue<Vector2>();
+       
+        if (input != Vector2.zero)
+            currentInput = input;
 
         //if both x and y are not 0, set x to 0, so that the indicator only shows one direction at a time
-        if (input.x != 0 && input.y != 0)
-            input.x = 0;
+        if (currentInput.x != 0 && currentInput.y != 0)
+            currentInput.x = 0;
 
-        currentInput = input;
-        targetRot = new Vector3(-input.y, 0f, input.x) * 90f;
-        indicatorObject.localRotation = Quaternion.Slerp(indicatorObject.localRotation, Quaternion.Euler(targetRot), Time.deltaTime * indicatorRotateSpeed);
+        
+        targetRot = new Vector3(-currentInput.y, 0f, currentInput.x) * 90f;
+        indicatorObject.localRotation = Quaternion.Slerp(indicatorObject.localRotation, Quaternion.Euler(targetRot), Time.unscaledDeltaTime * indicatorRotateSpeed);
 
         if (SelectAction.WasPressedThisFrame())
         {

@@ -1,29 +1,26 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("References")]
     public Transform cameraTransform;
     public Transform groundCheckStart;
     public LayerMask groundLayer;
 
-    public PlayerAnimations playerAnimations;
-
-    [Header("Inputs")]
     public InputActionAsset PlayerInput;
 
     private InputAction moveAction;
     private InputAction jumpAction;
 
-    [Header("Movement")]
     public float moveSpeed = 6f;
     public float rotationSpeed = 10f;
     public float jumpForce = 5f;
     public float groundCheckDistance = 0.1f;
 
     //Private variables
+    private PlayerAnimations playerAnimations;
     private Rigidbody rb;
     private Vector2 moveInput;
     private bool jumped = false;
@@ -39,6 +36,16 @@ public class PlayerMovement : MonoBehaviour
         currentGroundCheckDistance = groundCheckDistance;
     }
 
+    private void Start()
+    {
+        GameEvents.OnGameOver += PlayerInput.Disable;
+        GameEvents.OnGameWin += PlayerInput.Disable;
+    }
+
+    private void OnDestroy()
+    {
+        
+    }
     private void OnEnable()
     {
         PlayerInput.Enable();
@@ -94,15 +101,10 @@ public class PlayerMovement : MonoBehaviour
     void MovePlayer()
     {
         Vector3 forward = Vector3.ProjectOnPlane(cameraTransform.forward,Vector3.up).normalized;
-
         Vector3 right = Vector3.ProjectOnPlane(cameraTransform.right,Vector3.up).normalized;
-
         Vector3 moveDirection =(forward * moveInput.y + right * moveInput.x).normalized;
-
         Vector3 verticalVelocity = Vector3.Project(rb.linearVelocity,Vector3.up);
-
         Vector3 targetVelocity = moveDirection * moveSpeed;
-
         rb.linearVelocity = targetVelocity + verticalVelocity;
 
         // Rotate player toward movement direction

@@ -20,16 +20,12 @@ public class WorldRotationController : MonoBehaviour
     }
     #endregion /Singleton
 
-    [Header("References")]
     public Transform player;
-
     public Transform cameraTransform;
 
-    [Header("Rotation")]
     public float rotationDuration = 0.5f;
 
     private bool isRotating = false;
-
     private Quaternion targetRotation;
 
     private void Start()

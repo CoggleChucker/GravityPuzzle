@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6822601627996037781}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,13 +149,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  playerAnimations: {fileID: 0}
   PlayerInput: {fileID: -944628639613478452, guid: 09774f7a1e343b848a4dfcc149717b46,
     type: 3}
   moveSpeed: 6
   rotationSpeed: 10
   jumpForce: 5
-  groundCheckDistance: 0.5
+  groundCheckDistance: 0.2
   isOnGround: 0
 --- !u!54 &8165865093831914773
 Rigidbody:
@@ -191,7 +190,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7243045017545752175}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 736d4d76ed88d6043877ea1fea84654e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -203,7 +202,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 0.8
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
